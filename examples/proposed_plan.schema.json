@@ -1,0 +1,368 @@
+{
+  "$defs": {
+    "FieldMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "source_column": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Column"
+        },
+        "destination_column": {
+          "title": "Destination Column",
+          "type": "string"
+        },
+        "transformation": {
+          "$ref": "#/$defs/Transformation"
+        },
+        "status": {
+          "enum": [
+            "supported",
+            "needs_review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_column",
+        "destination_column",
+        "transformation",
+        "status",
+        "confidence",
+        "explanation",
+        "evidence"
+      ],
+      "title": "FieldMapping",
+      "type": "object"
+    },
+    "IDRelationship": {
+      "additionalProperties": false,
+      "properties": {
+        "source_child_table": {
+          "title": "Source Child Table",
+          "type": "string"
+        },
+        "source_child_columns": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Child Columns",
+          "type": "array"
+        },
+        "source_parent_table": {
+          "title": "Source Parent Table",
+          "type": "string"
+        },
+        "source_parent_columns": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Parent Columns",
+          "type": "array"
+        },
+        "destination_child_table": {
+          "title": "Destination Child Table",
+          "type": "string"
+        },
+        "destination_child_columns": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Destination Child Columns",
+          "type": "array"
+        },
+        "destination_parent_table": {
+          "title": "Destination Parent Table",
+          "type": "string"
+        },
+        "destination_parent_columns": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Destination Parent Columns",
+          "type": "array"
+        },
+        "strategy": {
+          "enum": [
+            "preserve_ids",
+            "id_lookup"
+          ],
+          "title": "Strategy",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_child_table",
+        "source_child_columns",
+        "source_parent_table",
+        "source_parent_columns",
+        "destination_child_table",
+        "destination_child_columns",
+        "destination_parent_table",
+        "destination_parent_columns",
+        "strategy",
+        "explanation"
+      ],
+      "title": "IDRelationship",
+      "type": "object"
+    },
+    "TableMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "source_table": {
+          "title": "Source Table",
+          "type": "string"
+        },
+        "destination_table": {
+          "title": "Destination Table",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "fields": {
+          "items": {
+            "$ref": "#/$defs/FieldMapping"
+          },
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_table",
+        "destination_table",
+        "explanation",
+        "fields"
+      ],
+      "title": "TableMapping",
+      "type": "object"
+    },
+    "Transformation": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "identity",
+            "rename",
+            "unit_scale",
+            "enum_translate",
+            "cast",
+            "constant"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "factor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Factor"
+        },
+        "from_unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "From Unit"
+        },
+        "to_unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "To Unit"
+        },
+        "value_map": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Value Map",
+          "type": "object"
+        },
+        "target_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Type"
+        },
+        "constant": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Constant"
+        }
+      },
+      "required": [
+        "kind",
+        "explanation"
+      ],
+      "title": "Transformation",
+      "type": "object"
+    },
+    "UnresolvedField": {
+      "additionalProperties": false,
+      "properties": {
+        "side": {
+          "enum": [
+            "source",
+            "destination"
+          ],
+          "title": "Side",
+          "type": "string"
+        },
+        "table": {
+          "title": "Table",
+          "type": "string"
+        },
+        "column": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Column"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "side",
+        "table",
+        "column",
+        "reason"
+      ],
+      "title": "UnresolvedField",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "table_mappings": {
+      "items": {
+        "$ref": "#/$defs/TableMapping"
+      },
+      "title": "Table Mappings",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "$ref": "#/$defs/IDRelationship"
+      },
+      "title": "Relationships",
+      "type": "array"
+    },
+    "unresolved_fields": {
+      "items": {
+        "$ref": "#/$defs/UnresolvedField"
+      },
+      "title": "Unresolved Fields",
+      "type": "array"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "explanation": {
+      "minLength": 1,
+      "title": "Explanation",
+      "type": "string"
+    }
+  },
+  "required": [
+    "table_mappings",
+    "relationships",
+    "unresolved_fields",
+    "assumptions",
+    "explanation"
+  ],
+  "title": "ProposedPlan",
+  "type": "object"
+}

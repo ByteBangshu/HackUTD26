@@ -1,0 +1,372 @@
+{
+  "table_mappings": [
+    {
+      "source_table": "patrons",
+      "destination_table": "customers",
+      "explanation": "Synthetic dictionary correspondence.",
+      "fields": [
+        {
+          "source_column": "patron_no",
+          "destination_column": "id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:patrons.patron_no",
+            "destination:customers.id"
+          ]
+        },
+        {
+          "source_column": "display_name",
+          "destination_column": "name",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:patrons.display_name",
+            "destination:customers.name"
+          ]
+        }
+      ]
+    },
+    {
+      "source_table": "menu",
+      "destination_table": "products",
+      "explanation": "Synthetic dictionary correspondence.",
+      "fields": [
+        {
+          "source_column": "sku",
+          "destination_column": "id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:menu.sku",
+            "destination:products.id"
+          ]
+        },
+        {
+          "source_column": "label",
+          "destination_column": "name",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:menu.label",
+            "destination:products.name"
+          ]
+        },
+        {
+          "source_column": "price_cents",
+          "destination_column": "unit_cents",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:menu.price_cents",
+            "destination:products.unit_cents"
+          ]
+        }
+      ]
+    },
+    {
+      "source_table": "checks",
+      "destination_table": "orders",
+      "explanation": "Synthetic dictionary correspondence.",
+      "fields": [
+        {
+          "source_column": "check_no",
+          "destination_column": "id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:checks.check_no",
+            "destination:orders.id"
+          ]
+        },
+        {
+          "source_column": "patron_no",
+          "destination_column": "customer_id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:checks.patron_no",
+            "destination:orders.customer_id"
+          ]
+        },
+        {
+          "source_column": "state",
+          "destination_column": "status",
+          "transformation": {
+            "kind": "enum_translate",
+            "explanation": "Status translation supplied in synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {
+              "P": "paid",
+              "O": "open",
+              "V": "void"
+            },
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:checks.state",
+            "destination:orders.status"
+          ]
+        }
+      ]
+    },
+    {
+      "source_table": "entries",
+      "destination_table": "order_items",
+      "explanation": "Synthetic dictionary correspondence.",
+      "fields": [
+        {
+          "source_column": "entry_no",
+          "destination_column": "id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:entries.entry_no",
+            "destination:order_items.id"
+          ]
+        },
+        {
+          "source_column": "check_no",
+          "destination_column": "order_id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:entries.check_no",
+            "destination:order_items.order_id"
+          ]
+        },
+        {
+          "source_column": "sku",
+          "destination_column": "product_id",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:entries.sku",
+            "destination:order_items.product_id"
+          ]
+        },
+        {
+          "source_column": "qty",
+          "destination_column": "quantity",
+          "transformation": {
+            "kind": "rename",
+            "explanation": "Same business field per supplied synthetic data dictionary.",
+            "factor": null,
+            "from_unit": null,
+            "to_unit": null,
+            "value_map": {},
+            "target_type": null,
+            "constant": null
+          },
+          "status": "supported",
+          "confidence": 0.95,
+          "explanation": "Synthetic test response supported by supplied dictionary; not an LLM execution.",
+          "evidence": [
+            "source:entries.qty",
+            "destination:order_items.quantity"
+          ]
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source_child_table": "checks",
+      "source_child_columns": [
+        "patron_no"
+      ],
+      "source_parent_table": "patrons",
+      "source_parent_columns": [
+        "patron_no"
+      ],
+      "destination_child_table": "orders",
+      "destination_child_columns": [
+        "customer_id"
+      ],
+      "destination_parent_table": "customers",
+      "destination_parent_columns": [
+        "id"
+      ],
+      "strategy": "preserve_ids",
+      "explanation": "Preserve declared FK through mapped ID columns."
+    },
+    {
+      "source_child_table": "entries",
+      "source_child_columns": [
+        "sku"
+      ],
+      "source_parent_table": "menu",
+      "source_parent_columns": [
+        "sku"
+      ],
+      "destination_child_table": "order_items",
+      "destination_child_columns": [
+        "product_id"
+      ],
+      "destination_parent_table": "products",
+      "destination_parent_columns": [
+        "id"
+      ],
+      "strategy": "preserve_ids",
+      "explanation": "Preserve declared FK through mapped ID columns."
+    },
+    {
+      "source_child_table": "entries",
+      "source_child_columns": [
+        "check_no"
+      ],
+      "source_parent_table": "checks",
+      "source_parent_columns": [
+        "check_no"
+      ],
+      "destination_child_table": "order_items",
+      "destination_child_columns": [
+        "order_id"
+      ],
+      "destination_parent_table": "orders",
+      "destination_parent_columns": [
+        "id"
+      ],
+      "strategy": "preserve_ids",
+      "explanation": "Preserve declared FK through mapped ID columns."
+    }
+  ],
+  "unresolved_fields": [],
+  "assumptions": [
+    "Human reviewer must confirm the synthetic data dictionary."
+  ],
+  "explanation": "Hand-authored test fixture; not AI-generated.",
+  "format_version": "1.0",
+  "run_id": "dae02bb9bde344b5b24a6b2f6d0b81f2",
+  "status": "approved",
+  "source_schema_sha256": "fd10b4edbec2afa356125f7bae44dc978a84fe00778d45207779ff4cdb6fe65c",
+  "destination_schema_sha256": "0df2eea4e5bbb272ec8b54f4aa13a84ef4ee1106fa2ff0fdc3678b461c7e07b2",
+  "approval": {
+    "reviewer": "Synthetic test reviewer",
+    "reason": "Reviewed against the synthetic dictionary.",
+    "approved_at": "2026-11-08T05:20:52.037889+00:00"
+  },
+  "mapping_origin": "test_fixture",
+  "limitations": [
+    "Planning only. No records transferred or post-migration checks executed.",
+    "Schema validation cannot prove semantic correctness, actual NULL frequency, value ranges, ID collisions, unique conflicts or destination capacity.",
+    "Synthetic examples are not observed data. Transfer engine must perform independent preflight checks.",
+    "v1 supports one-to-one table mappings and preserved IDs. Joins, splits, merges, regenerated IDs, views and virtual tables require an extended contract."
+  ]
+}
